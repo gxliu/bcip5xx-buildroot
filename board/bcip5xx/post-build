@@ -1,0 +1,6 @@
+#!/bin/sh
+T="$1"
+cf() { mkdir -p "`dirname "$T$2"`"; cat > "$T$2"; chmod "$1" "$T$2"; }
+
+echo Copying your SSH key to the image.
+cf 600 /etc/dropbear/authorized_keys < "$HOME"/.ssh/id_rsa.pub
